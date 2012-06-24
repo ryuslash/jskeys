@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Keyjs test</title>
+  </head>
+  <body>
+    <script src="jskeys.js" language="javascript"></script>
+    <script language="javascript">
+      jskeys_initialize({ "u": [ "jskeys_goto", "#up" ],
+                         "h": [ "jskeys_goto", "#home" ],
+                         "C-c": [ "alert", "works!" ],
+                         "C-i": [ "alert", "doesn't!" ]});
+    </script>
+
+    <p>This is a simple body, but it serves me well.</p>
+  </body>
+</html>

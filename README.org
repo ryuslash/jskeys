@@ -1,0 +1,61 @@
+* Jskeys
+
+  A simple (I hope?) key-binding library in JavaScript. Currently only
+  an *Experiment*, don't expect miracles.
+
+  It has only been tested a little and only on firefox 13 and chromium
+  19, both on GNU/Linux.
+
+** Usage
+
+   To use, just include it and call =jskeys_initialize=. Like so:
+
+   #+begin_src html
+     <script src="/jskeys.js" language="javascript"></script>
+     <script language="javascript">
+       jskeys_initialize({ "u": [ "jskeys_goto", "../" ],
+                           "h": [ "jskeys_goto", "http://www.example.com" ] });
+     </script>
+   #+end_src
+
+   The argument for =jskeys_initialize= should be an associative array
+   that looks like this:
+
+   #+begin_src javascript
+     { char: [ function, args... ],
+       ... }
+   #+end_src
+
+   Where ~CHAR~ should be a string character specification, which can
+   be:
+
+   - ~n~ :: Where ~N~ is any single character, for just a pressed character.
+   - ~C-n~ :: Where ~N~ is any single character, for ~<control>~ + ~N~.
+   - ~M-n~ :: Where ~N~ is any single character, for ~<alt>~ + ~N~, or
+            ~<meta>~ + ~N~.
+   - ~S-n~ :: Where ~N~ is any single character, for ~<shift>~ + ~N~.
+
+   Where ~FUNCTION~ is a string containing the name of the function to
+   call and where ~ARGS~ is any number of arguments in any form that you
+   want to pass along to ~FUNCTION~. It is your own responsibility to
+   make sure that ~FUNCTION~ can handle what you put in ~ARGS~.
+
+** Caveats
+
+   Right now it is in a very early stage of development, so it /may/ get
+   fixed later on, but for now, at least in chromium, not all
+   key-bindings can work. Browser keyboard shortcuts can not (yet) be
+   overridden. This does seem to work in firefox.
+
+   When using a browser plugin like pentadactyl, you should first make
+   sure that the keys can get through to the web page.
+
+** Example
+
+   My own [[http://org.ryuslash.org][~org-mode~-powered website]] uses this in some places. The
+   front page and the project pages use it currently, press ~u~ or ~h~
+   there to go "UP" or "HOME".
+
+   There is also the ~test.html~, where ~u~ goes to ~#up~, ~h~ goes to ~#home~,
+   ~C-c~ (that is, ~<control>+c~) alerts the message "works!" and ~C-i~
+   (that is, ~<control>+i~) alerts the message "doesn't!".
